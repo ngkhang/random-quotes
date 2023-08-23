@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    // 👇Find extension name: More Info > Identifier
+    "dbaeumer.vscode-eslint",
+    "dsznajder.es7-react-js-snippets",
+    "bradlc.vscode-tailwindcss",
+  ]
+}
