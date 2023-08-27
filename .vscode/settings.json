@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.css": "tailwindcss", // Config for Tailwindcss
+    },
+    "javascript.preferences.quoteStyle": "single",
+    "typescript.preferences.quoteStyle": "single",
+    "editor.foldingStrategy": "auto", // Folding import
+}

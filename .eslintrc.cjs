@@ -5,67 +5,70 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
-    'plugin:react/jsx-runtime',
-    "airbnb",
-    "airbnb-typescript",
+    // 'plugin:react/jsx-runtime',
+    'airbnb',
+    'airbnb/hooks',
   ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'tailwind.config.js', 'vite.config.ts'],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     project: 'tsconfig.json',
     tsconfigRootDir: __dirname,
+    ecmaVersion: 'latest',
     sourceType: 'module',
+    allowImportExportEverywhere: true,
   },
-  ignorePatterns: ['dist', '.eslintrc.cjs', 'tailwind.config.js'],
-  parser: '@typescript-eslint/parser',
+  // 👇 Handle: 'JSX' is not defined.eslintno-undef
+  globals: {
+    JSX: true,
+  },
   plugins: [
     'react',
     'react-hooks',
     'react-refresh',
-    '@typescript-eslint'
+    'jsx-a11y'
   ],
   rules: {
+    // react-...
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
     ],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
-    'react/prop-types': 1,
+    'react/prop-types': 0,
     'react/display-name': 0,
-    // 👇 In React > 17, no longer need to import react when writing JSX if no use
-    'react/react-in-jsx-scope': 0,
-
-    // 👉 Rules ESLint: https://eslint.org/docs/latest/rules/
-    // and TypeScript-ESLint: https://typescript-eslint.io/rules/
+    'react/jsx-filename-extension': [1, { 'extensions': ['.ts', '.tsx'] }],
+    'react/react-in-jsx-scope': 0, // 👈 In React > 17, no longer need to import react when writing JSX if no use
+    'react/jsx-one-expression-per-line': [1, { 'allow': 'single-child' }],
+    // import/...
+    'import/no-unresolved': 0,
+    'import/no-extraneous-dependencies': 'off',
+    'import/extensions': 0,
 
     'no-console': 1,
     'no-lonely-if': 1,
-    'no-unused-vars': 1,
+    'no-unused-vars': 0, // 👈 default @typescript-eslint/no-unused-vars: 1
     'no-trailing-spaces': 1,
     'no-multi-spaces': 1,
     'no-multiple-empty-lines': 1,
+    'no-unexpected-multiline': 'warn',
+    'no-shadow': 0,
     'space-before-blocks': ['error', 'always'],
     'object-curly-spacing': [1, 'always'],
     'indent': ['warn', 2],
-    // 'semi': [1, 'never'], // config with Airbnb
+    // 'semi': [1, 'never'], // Config with Airbnb
     'quotes': ['error', 'single'],
     'array-bracket-spacing': 1,
     'linebreak-style': 0,
-    'no-unexpected-multiline': 'warn',
     'keyword-spacing': 1,
-    "comma-dangle": ["error", {
-      "arrays": "always",
-      "objects": "always",
-      // "imports": "never",
-      // "exports": "never",
-      // "functions": "never",
-    }],
-    "@typescript-eslint/comma-dangle": "off",
+    'comma-dangle': 1,
     'comma-spacing': 1,
     'arrow-spacing': 1,
-    "import/extensions": 0, // 👈 https://github.com/airbnb/javascript#modules--import-extensions
-    "import/no-extraneous-dependencies": [
-      "error",
-      { "devDependencies": true }
-    ]
+    'arrow-body-style': 0,
+    // Add new
+    'quote-props': ['error', 'consistent'],
+    'dot-notation': ["error", { "allowPattern": "^(_[a-z]+)+[a-z]+$" }],
+    "jsx-a11y/click-events-have-key-events": "off",
   },
 }

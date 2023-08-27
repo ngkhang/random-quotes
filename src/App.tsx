@@ -11,6 +11,7 @@ function App() {
         {
           PublicRoutes.map((route) => (
             <Route
+              key={route.id}
               path={route.path}
               element={(
                 <Layout.DefaultLayout>

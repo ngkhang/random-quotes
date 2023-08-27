@@ -1,9 +1,9 @@
-# 👋 Random Quotes
+# ✨Inspriational Quotes
 
 <details>
 <summary><strong>Table of Contents:</strong></summary>
 
-- [👋 Random Quotes](#-random-quotes)
+- [✨Inspriational Quotes](#inspriational-quotes)
   - [Note from Vite](#note-from-vite)
     - [Expanding the ESLint configuration](#expanding-the-eslint-configuration)
   - [About this project](#about-this-project)
@@ -98,7 +98,7 @@ If you are developing a production application, we recommend updating the config
     - TypeScript-eslint: <https://typescript-eslint.io/rules/>
   - **Airbnb Guide Style**: <https://airbnb.io/javascript/>
     - React: <https://airbnb.io/javascript/react/>
-  - ...
+  - React Icons: <https://react-icons.github.io/react-icons>
 
 ---
 
@@ -115,7 +115,7 @@ If you are developing a production application, we recommend updating the config
 2. Change to the project directory
 
    ``` powershell
-   cd boilerplate-react-vite-ts
+   cd random-quotes
    ```
 
 3. Install the dependencies:
@@ -189,11 +189,8 @@ Preview project before build production.
 │   ├── assets
 │   ├── components/
 │   │   ├── generic/
-│   │   │   ├── BlankComponent
+│   │   │   ├── Header
 │   │   │   └── ...
-│   │   ├── Header
-│   │   ├── Footer
-│   │   ├── ...
 │   │   └── layout/
 │   │       ├── defaultLayout.tsx
 │   │       └── index.tsx

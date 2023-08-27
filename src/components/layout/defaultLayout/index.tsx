@@ -1,11 +1,12 @@
 import React from 'react';
+import Header from '~/components/generic/Header';
 
-function DefaultLayout({ children, }: { children: React.ReactElement }) {
+function DefaultLayout({ children }: { children: React.ReactElement }) {
   return (
     <div className="">
-      {/* Header component */}
+      <Header />
       {children}
-      {/* Footer component */}
+      {/* <Footer /> */}
     </div>
   );
 }
