@@ -15,17 +15,17 @@ import Quote from '~/types/Quote';
 
 function CardQuote({ data }: {data:Quote}) {
   return (
-    <div className="w-full shadow-md rounded-xl hover:-rotate-2 transition-transform ease-in-out duration-200">
+    <div className="w-full shadow-xl rounded-xl hover:-rotate-2 transition-transform ease-in-out duration-200">
       <div className="bg-white relative p-8 rounded-t-xl ">
         <span>
-          {Icons.QuotesL('absolute -left-12 -top-10 text-8xl text-pink-400/70')}
+          {Icons.QuotesL('absolute -left-9 -top-8 text-7xl text-pink-400/70')}
         </span>
-        <h2 className="indent-4 first-letter:text-pink-500 first-letter:text-4xl first-letter:font-bold text-lg whitespace-pre-line break-words leading-8">
+        <p className="indent-2 first-letter:text-pink-500 first-letter:text-5xl first-letter:font-bold text-lg whitespace-pre-line break-words leading-8">
           {data.content}
-        </h2>
+        </p>
       </div>
-      <div className="bg-blue-200 rounded-b-xl p-5 text-end text-base tracking-wide">
-        <Link to={`/author/${data.authorSlug}`}>{data.author}</Link>
+      <div className="bg-blue-200/80 rounded-b-xl p-5 text-end text-base tracking-wide">
+        <Link to={`/author/${data.authorSlug}`} className="">{data.author}</Link>
       </div>
     </div>
   );

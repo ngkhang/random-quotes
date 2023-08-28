@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Author from '~/types/Author';
 import Icons from '~/utils/helpers/icons';
@@ -15,30 +16,26 @@ function CardAuthor({ author }: { author: Author }) {
 
   return (
     <>
-      <div className="w-full rounded-lg mb-5 bg-pink-300/60 p-3 box-border hover:scale-110 transition-transform flex flex-col">
-        <div className="p-2 mb-4 bg-white rounded-md">
-          <div className="flex justify-between items-center mb-2">
-            <button onClick={handleModal} type="button" className="text-lg font-semibold">{author.name}</button>
-            <a href={author.link} target="_blank" rel="noreferrer" className="mr-2">{Icons.Wiki('text-2xl')}</a>
-          </div>
-          <p className="text-xs line-clamp-1">{author.description}</p>
-        </div>
-        <div className="">
-          <p className="text-sm line-clamp-2 leading-6 tracking-wider mb-6">{author.bio}</p>
-          <span className="inline-block w-full text-end text-sm italic rounded-b-md">{`Modefied: ${author.dateModified}`}</span>
+      <div className="w-full rounded-lg mb-8 bg-slate-100 shadow-lg p-4 box-border hover:scale-110 transition-transform" onClick={handleModal} aria-hidden>
+        <div className="flex flex-col">
+          <h3 className="text-xl font-semibold mb-3">{author.name}</h3>
+          <p className="text-base line-clamp-2 mb-6">{author.bio}</p>
+          <span className="text-sm italic text-end">{`Edited: ${author.dateModified}`}</span>
         </div>
       </div>
       <Modal title={author.name} isOpen={open} onCancel={handleClose}>
         <div className="">
-          <div className="mb-1">{author.description}</div>
-          <div className="flex items-center flex-wrap mb-4">
-            <a href={author.link} className="flex items-center p-1 bg-white rounded-full">
-              <span className="p-1 inline-block rounded-full bg-pink-400/50 mr-1">{Icons.Wiki()}</span>
-              <span className="text-xs italic pr-1">{author.slug}</span>
+          <div className="mb-4">{author.description}</div>
+          <p className="tracking-wide line-clamp-4 mb-12 break-words">{author.bio}</p>
+          <div className="flex items-center justify-between">
+            <a href={author.link} className="flex items-center bg-white rounded-full">
+              <span className="bg-slate-200/50 rounded-full p-1 inline-block mr-1">{Icons.Wiki()}</span>
+              <span className="text-xs italic pr-2">{author.name}</span>
             </a>
-          </div>
-          <div className="">
-            <p className="tracking-wide">{author.bio}</p>
+            <Link to={`../author/${author.slug}`} className="flex items-center justify-end">
+              <span className="mr-1">Details</span>
+              <span>{Icons.External('text-2xl')}</span>
+            </Link>
           </div>
         </div>
       </Modal>

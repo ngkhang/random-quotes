@@ -1,12 +1,27 @@
-function Loader({ size = '40px' }: { size: string }) {
+interface TypeLoader{
+  wh?: string,
+  isOpen: boolean,
+  fSize?:string,
+}
+
+function Loader({ wh, isOpen, fSize }: TypeLoader) {
   return (
     <div
-      className="inline-block box-border rounded-1/2"
+      className={`${isOpen ? 'inline-block' : 'hidden'} box-border text-[#FF3D00] relative`}
       style={{
-        animation: 'rotation 1s linear infinite', width: size, height: size, border: '5px solid #FFF', borderBottomColor: '#FF3D00', borderRadius: '50%',
+        animation: 'mulShdSpin 1.3s linear infinite',
+        borderRadius: '50%',
+        width: wh,
+        height: wh,
+        fontSize: fSize,
       }}
     />
   );
 }
+
+Loader.defaultProps = {
+  wh: '10px',
+  fSize: '12px',
+};
 
 export default Loader;

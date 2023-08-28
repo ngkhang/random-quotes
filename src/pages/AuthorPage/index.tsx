@@ -1,69 +1,86 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Apis from '~/apis';
+import Loader from '~/components/generic/Loader';
 import Author from '~/types/Author';
 import Quote from '~/types/Quote';
 import Icons from '~/utils/helpers/icons';
 
 function AuthorPage() {
   const { slugAuthor } = useParams();
-
   const [author, setAuthor] = useState<Author>();
   const [quotes, setQuotes] = useState<Quote[]>();
+  const [isShow, setShow] = useState(false);
 
-  const getAuthorbySlug = () => {
+  useEffect(() => {
     fetch(Apis.GET_AUTHOR + slugAuthor)
       .then((res) => res.json())
       .then((data) => setAuthor(data.results[0]));
-  };
-  const getAllQuotesByAuthor = () => {
-    fetch(Apis.ALL_QUOTES_BY_AUTHOR + slugAuthor)
-      .then((res) => res.json())
-      .then((data) => setQuotes(data.results));
-  };
-
-  useEffect(() => {
-    getAuthorbySlug();
-    getAllQuotesByAuthor();
   }, [slugAuthor]);
 
+  useEffect(() => {
+    if (isShow) {
+      fetch(Apis.ALL_QUOTES_BY_AUTHOR + slugAuthor)
+        .then((res) => res.json())
+        .then((data) => setQuotes(data.results));
+    } else setQuotes([]);
+  }, [isShow, slugAuthor]);
+
   return (
-    <div className="flex justify-center min-h-screen bg-slate-100 py-5">
-      <div className="w-full px-5 box-border">
+    <div className="flex justify-center flex-grow bg-slate-100 pt-5">
+      <div className="w-full box-border flex flex-col">
         {
           author && (
             <>
-              <div className="mb-10 flex flex-col items-center">
-                <h1 className="text-2xl pt-8 pb-5">{author.name}</h1>
-                <div className="w-full">
-                  <div className="flex items-center flex-wrap">
-                    <a href={author.link} className="mr-4 p-1 rounded-full flex items-center bg-white">
-                      <span className="p-2 rounded-full bg-slate-300 mr-2">{Icons.Wiki('text-base')}</span>
-                      <span className="text-xs italic pr-2">{author.slug}</span>
+              <div className="bg-white px-5 box-border mb-5 flex flex-col items-center">
+                <h1 className="text-3xl pt-8 mb-12">{author.name}</h1>
+                <div className="w-full mb-8">
+                  <div className="flex items-center flex-wrap mb-3">
+                    <a href={author.link} className="mr-2 p-1 rounded-full flex items-center bg-slate-200">
+                      <span className="p-1 rounded-full mr-2">{Icons.Wiki('text-base')}</span>
+                      <span className="text-xs italic pr-2">{author.name}</span>
                     </a>
                   </div>
                   <div className="">
-                    <p className="">{author.description}</p>
-                    <p className="">{author.bio}</p>
-                    <span className="mt-5 italic text-sm text-end block">{`Lasted edite: ${author.dateModified}`}</span>
+                    <p className="text-end text-base italic mb-8">{author.description}</p>
+                    <p className="text-lg leading-8 break-words mb-10 first-letter:text-2xl indent-5">{author.bio}</p>
+                    <p className="italic text-sm text-end">{`Lasted edite: ${author.dateModified}`}</p>
                   </div>
                 </div>
-
               </div>
-              <div className="">
-                <div className="">
+              <div className={`${isShow && 'flex-grow'} flex flex-col px-5 mb-12`}>
+                <div className="flex items-center justify-between mb-3 py-2">
+                  <span className="flex-grow text-xl">{`List Quotes: ${author.quoteCount}`}</span>
                   {
-                    quotes && quotes.map((quote) => {
-                      return (
-                        <div key={quote['_id']} className="">
-                          <div className="">
-                            <p>{quote.content}</p>
-                          </div>
-                        </div>
-                      );
-                    })
+                    author.quoteCount > 0 && (
+                      <button className="text-2xl" type="button" onClick={() => setShow((isShow) => !isShow)}>
+                        {isShow ? Icons.ArrowUp() : Icons.ArrowDown() }
+                      </button>
+                    )
                   }
                 </div>
+                {
+                  isShow && quotes && quotes.length > 0
+                    ? (
+                      <div className="">
+                        {
+                          quotes.map((quote) => {
+                            return (
+                              <div key={quote['_id']} className="p-2 mt-4 bg-white rounded-lg shadow-lg">
+                                <p className="text-base first-letter:text-2xl mb-2 tracking-wide indent-4">{quote.content}</p>
+                                <p className="text-end text-sm italic">{quote.tags.join(', ')}</p>
+                              </div>
+                            );
+                          })
+                        }
+                      </div>
+                    )
+                    : (
+                      <div className="flex-grow flex items-center justify-center">
+                        <Loader isOpen={isShow} />
+                      </div>
+                    )
+                }
               </div>
             </>
           )
