@@ -1,4 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
+import Icons from '~/utils/helpers/icons';
 
 const dataPage = {
   name: 'Inspriational',
@@ -14,11 +15,18 @@ const dataPage = {
       url: '/authors',
     },
   ],
+  social: [
+    {
+      id: 1,
+      icon: 'Linkedin',
+      url: 'https://www.linkedin.com/in/ngkhang0220/',
+    },
+  ],
 };
 
 function Header() {
   return (
-    <div className="flex justify-center bg-slate-200 fixed z-10 w-full px-2">
+    <div className="flex justify-center shadow-md shadow-slate-200 bg-white fixed z-10 w-full px-2">
       <div className="w-full flex justify-between items-center">
         <Link to="/" className="text-xs">
           {dataPage.name}
@@ -26,7 +34,12 @@ function Header() {
         <div className="flex items-center">
           {
             dataPage.nav.map((ele) => {
-              return <NavLink to={ele.url} key={ele.id} className="px-3 py-2 uppercase text-base">{ele.name}</NavLink>;
+              return <NavLink to={ele.url} key={ele.id} className="px-3 py-2 uppercase text-sm border-b-4 border-b-transparent">{ele.name}</NavLink>;
+            })
+          }
+          {
+            dataPage.social.map((ele) => {
+              return <a className="text-lg px-3 py-2 inline-block text-blue-600" key={ele.id} href={ele.url}>{Icons[ele.icon]()}</a>;
             })
           }
         </div>

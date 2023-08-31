@@ -13,8 +13,8 @@ function HomePage() {
     try {
       const response = await fetch(Apis.GET_QUOTES);
       if (response.status) {
-        setLoader(false);
         const data = await response.json();
+        setLoader(false);
         setQuote(data[0]);
       } else console.log(`HTTP Response Code: ${response.status}`);
     } catch (error) {
@@ -27,18 +27,18 @@ function HomePage() {
   }, []);
 
   return (
-    <div className="flex-grow bg-white flex flex-col items-center pt-16">
-      <h1 className="text-2xl mb-10">✨ Inspriational Quotes ✨</h1>
+    <div className="flex-grow bg-white flex flex-col items-center">
+      <h1>✨ Inspriational Quotes ✨</h1>
       <div className="flex-grow flex justify-center items-center">
         {
           quote && isLoader === false
             ? (
               <div className="flex flex-col items-center justify-between">
-                <div className="flex-grow w-3/4 mb-20">
+                <div className="flex-grow w-[80%] mb-14">
                   <CardQuote data={quote} />
                 </div>
-                <div className="mb-8">
-                  <button onClick={handleRandomQuote} type="submit" className="px-20 py-3 text-base bg-pink-400/80 text-slate-50 rounded-lg">
+                <div className="mb-6">
+                  <button onClick={handleRandomQuote} type="submit" className="px-20 py-3 text-base bg-pink-500 text-slate-50 drop-shadow-md hover:drop-shadow-xl transition-shadow rounded-lg">
                     New Quotes
                   </button>
                 </div>

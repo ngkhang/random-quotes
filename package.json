@@ -1,9 +1,9 @@
 {
-  "name": "boilerplate-vite-react-typescript",
+  "name": "vite-react-typescript",
   "private": true,
   "version": "0.0.0",
   "author": "Khang Nguyen",
-  "description": "Random quotes project with React",
+  "description": "Random quotes project with React - TypeScript",
   "type": "module",
   "scripts": {
     "dev": "vite",

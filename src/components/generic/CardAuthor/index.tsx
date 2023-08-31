@@ -16,16 +16,16 @@ function CardAuthor({ author }: { author: Author }) {
 
   return (
     <>
-      <div className="w-full rounded-lg mb-8 bg-slate-100 shadow-lg p-4 box-border hover:scale-110 transition-transform" onClick={handleModal} aria-hidden>
+      <div className="w-full rounded-lg mb-8 bg-white shadow-xl p-4 box-border hover:scale-110 transition-transform" onClick={handleModal} aria-hidden>
         <div className="flex flex-col">
-          <h3 className="text-xl font-semibold mb-3">{author.name}</h3>
-          <p className="text-base line-clamp-2 mb-6">{author.bio}</p>
-          <span className="text-sm italic text-end">{`Edited: ${author.dateModified}`}</span>
+          <h3 className="text-lg mb-3">{author.name}</h3>
+          <p className="text-sm line-clamp-2 mb-6">{author.bio}</p>
+          <span className="text-xs italic text-end">{`Edited: ${author.dateModified}`}</span>
         </div>
       </div>
       <Modal title={author.name} isOpen={open} onCancel={handleClose}>
         <div className="">
-          <div className="mb-4">{author.description}</div>
+          <div className="italic text-sm mb-4">{author.description}</div>
           <p className="tracking-wide line-clamp-4 mb-12 break-words">{author.bio}</p>
           <div className="flex items-center justify-between">
             <a href={author.link} className="flex items-center bg-white rounded-full">
@@ -33,8 +33,8 @@ function CardAuthor({ author }: { author: Author }) {
               <span className="text-xs italic pr-2">{author.name}</span>
             </a>
             <Link to={`../author/${author.slug}`} className="flex items-center justify-end">
-              <span className="mr-1">Details</span>
-              <span>{Icons.External('text-2xl')}</span>
+              <span className="text-sm mr-1">Details</span>
+              <span>{Icons.External('text-xl')}</span>
             </Link>
           </div>
         </div>

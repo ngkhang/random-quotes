@@ -8,6 +8,14 @@ body{
   @apply font-rubik;
 }
 
+.active{
+  @apply border-b-pink-400;
+}
+
+h1{
+  @apply text-3xl mt-16 pb-12;
+}
+
 .loader {
   text-indent: -9999em;
   transform: translateZ(0);
