@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "author": "Khang Nguyen",
-  "description": "Random quotes project with React - TypeScript",
+  "description": "Quotes Inspirational project with React - TypeScript",
   "type": "module",
   "scripts": {
     "dev": "vite",

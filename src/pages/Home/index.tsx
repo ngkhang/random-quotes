@@ -28,7 +28,7 @@ function HomePage() {
 
   return (
     <div className="flex-grow bg-white flex flex-col items-center">
-      <h1>✨ Inspriational Quotes ✨</h1>
+      <h1>✨ Quotes Inspirational ✨</h1>
       <div className="flex-grow flex justify-center items-center">
         {
           quote && isLoader === false

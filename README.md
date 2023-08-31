@@ -1,9 +1,9 @@
-# ✨Inspriational Quotes
+# ✨Quotes Inspirational
 
 <details>
 <summary><strong>Table of Contents:</strong></summary>
 
-- [✨Inspriational Quotes](#inspriational-quotes)
+- [✨Quotes Inspirational](#quotes-inspirational)
   - [Note from Vite](#note-from-vite)
     - [Expanding the ESLint configuration](#expanding-the-eslint-configuration)
   - [About this project](#about-this-project)
