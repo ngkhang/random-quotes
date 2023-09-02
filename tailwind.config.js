@@ -8,7 +8,10 @@ export default {
     extend: {
       fontFamily: {
         rubik: ['Rubik', 'sans-serif'],
-      }
+      },
+      width: {
+        "mainSize": "75%"
+      },
     },
   },
   plugins: [],

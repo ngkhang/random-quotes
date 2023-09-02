@@ -28,27 +28,23 @@ function HomePage() {
 
   return (
     <div className="flex-grow bg-white flex flex-col items-center">
-      <h1>✨ Quotes Inspirational ✨</h1>
-      <div className="flex-grow flex justify-center items-center">
+      <h1 className="md:mb16">✨ Quotes Inspirational ✨</h1>
+      <div className="w-full md:w-mainSize flex justify-center items-center">
         {
           quote && isLoader === false
             ? (
               <div className="flex flex-col items-center justify-between">
-                <div className="flex-grow w-[80%] mb-14">
+                <div className="flex-grow px-12 md:px-10 box-border mb-14 md:mb-20">
                   <CardQuote data={quote} />
                 </div>
                 <div className="mb-6">
-                  <button onClick={handleRandomQuote} type="submit" className="px-20 py-3 text-base bg-pink-500 text-slate-50 drop-shadow-md hover:drop-shadow-xl transition-shadow rounded-lg">
+                  <button onClick={handleRandomQuote} type="submit" className="px-20 md:px-24 py-3 text-base md:font-medium md:text-lg bg-pink-500 text-slate-50 drop-shadow-md hover:drop-shadow-xl transition-shadow rounded-lg">
                     New Quotes
                   </button>
                 </div>
               </div>
             )
-            : (
-              <div className="">
-                <Loader isOpen={isLoader} />
-              </div>
-            )
+            : <Loader isOpen={isLoader} />
         }
       </div>
     </div>

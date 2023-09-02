@@ -27,8 +27,8 @@ const dataPage = {
 function Header() {
   return (
     <div className="flex justify-center shadow-md shadow-slate-200 bg-white fixed z-10 w-full px-2">
-      <div className="w-full flex justify-between items-center">
-        <Link to="/" className="text-xs">
+      <div className="w-full md:w-mainSize flex justify-between items-center">
+        <Link to="/" className="text-xs md:text-sm">
           {dataPage.name}
         </Link>
         <div className="flex items-center">
@@ -39,7 +39,9 @@ function Header() {
           }
           {
             dataPage.social.map((ele) => {
-              return <a className="text-lg px-3 py-2 inline-block text-blue-600" key={ele.id} href={ele.url}>{Icons[ele.icon]()}</a>;
+              return (
+                <a className="text-lg px-3 py-2 inline-block text-blue-600" target="_blank" rel="noreferrer" key={ele.id} href={ele.url}>{Icons[ele.icon]()}</a>
+              );
             })
           }
         </div>

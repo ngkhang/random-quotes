@@ -22,10 +22,10 @@ function Modal({
 
   return (
     <div className={`${isOpen ? 'fixed' : 'hidden'} inset-0 flex justify-center items-center`}>
-      <div className="fixed inset-0 z-50 box-border bg-black/30 backdrop-blur-sm" onClick={handleClose} aria-hidden />
-      <div className="relative z-50 bg-[#fafafa] w-[85%] p-5 rounded-xl shadow-md shadow-blue-400">
-        <div className="flex justify-between items-center pb-3 mb-3 border-b-2 border-blue-400 border-dashed">
-          <h3 className="uppercase text-lg flex-grow mr-2">{title}</h3>
+      <div className="fixed inset-0 z-50 box-border bg-slate-800/30 backdrop-blur-sm" onClick={handleClose} aria-hidden />
+      <div className="relative z-50 bg-[#fafafa] w-[85%] md:w-mainSize p-5 md:p-10 box-border rounded-xl shadow-md shadow-pink-400">
+        <div className="flex justify-between items-center mb-2 md:mb-4">
+          <h3 className="uppercase text-lg md:text-xl flex-grow mr-2">{title}</h3>
           <button type="button" onClick={handleClose2}>{Icons.Close('text-4xl text-pink-600')}</button>
         </div>
         {children}

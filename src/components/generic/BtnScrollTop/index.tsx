@@ -22,9 +22,9 @@ function BtnScrollTop() {
   }, []);
 
   return (
-    <div className={`${isVisible ? 'fixed' : 'hidden'} text-slate-500 bottom-1 right-1 opacity-50 hover:opacity-100`}>
+    <div className={`${isVisible ? 'fixed' : 'hidden'} text-slate-500 bottom-1 md:bottom-2 right-1 md:right-4 opacity-50 hover:opacity-100`}>
       <button type="button" className="" onClick={handleScrollTop}>
-        {Icons.ArrowUp('text-3xl')}
+        {Icons.ArrowUp('text-3xl md:text-4xl')}
       </button>
     </div>
   );

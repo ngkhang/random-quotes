@@ -13,12 +13,16 @@ body{
 }
 
 h1{
-  @apply text-3xl mt-16 pb-12;
+  @apply text-3xl md:text-4xl mt-16 md:mt-20 mb-10 text-center;
 }
 
 .loader {
   text-indent: -9999em;
   transform: translateZ(0);
+}
+
+.btnPagination{
+  @apply px-3 py-1 mx-1 border rounded-md bg-white hover:bg-slate-200/60 transition-colors
 }
 
 @keyframes mulShdSpin {
